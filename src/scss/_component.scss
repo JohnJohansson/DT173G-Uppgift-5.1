@@ -1,0 +1,98 @@
+// A place for buttons, text boxes, links ect
+
+// main menu ---------------------
+
+.main-menu ul {
+    display: flex;
+}
+
+// nesting the links in the main menu
+.main-menu {
+    a {
+        margin         : .3rem;
+        color          : $color2_light;
+        text-transform : uppercase;
+        text-decoration: none;
+        padding        : 1.1rem .8rem;
+    }
+
+    a:hover {
+        color: $color4;
+    }
+
+}
+
+.header-wrapper {
+    .logo {
+        a {
+            text-transform : uppercase;
+            text-decoration: none;
+            color          : $color2_light;
+        }
+    }
+}
+
+// banner picture -----------------
+.banner {
+    position: relative;
+    width   : 100%;
+
+    h1 {
+        font-size: 4.5vw;
+        color    : $color1;
+        position : absolute;
+        top      : 40%;
+        left     : 38%;
+    }
+
+    img {
+
+        width: inherit;
+    }
+}
+
+// footer -----------------
+footer {
+
+    .box1 {
+        @include boxes;
+        background-color: $color3_light;
+        margin-top      : 2%;
+        margin-bottom   : 2%;
+        text-align      : center;
+    }
+
+    // @extend copies the box1 styling
+    .box2,
+    .box3 {
+        @extend .box1;
+    }
+}
+
+@media screen and (max-width: 1055px) {
+
+    footer {
+
+        .box1 {
+            @include boxes($small: true);
+            margin               : 0 auto;
+            margin-top           : 2%;
+            margin-bottom        : 2%;
+
+        }
+
+        // @extend copies the box1 styling
+        .box2,
+        .box3 {
+            @extend .box1;
+        }
+    }
+}
+
+@media screen and (max-width: 625px) {
+    .header-wrapper {
+        .logo {
+            margin-left: 40%;
+        }
+    }
+}
