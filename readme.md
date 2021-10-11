@@ -8,7 +8,6 @@ An continuation of assigment 3
 
 **v1.1**
 Fixed the bugs thanks to exelent teacher feedback, the problem was that the submit button reloded the page 
-
 before the code had time to run through. 
 
 Fixed this by adding a event function to prevent the defult behavior 
