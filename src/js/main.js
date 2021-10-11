@@ -24,15 +24,9 @@ window.addEventListener('load', getCourses);
 // by putting an extra function and adding prevent defult we can stop the
 // form from reloding the page, a defult form relodes the page
 // stoping all the code from having time to run making the code not work as intended.
-addCoursebtn.addEventListener('click', function(e) {
-e.preventDefault();
-addCourse();
-//after we run through all code we give back the forms fields empty values
-// So they wont retain the previusly inputed information
-document.getElementById("addKurskod").value="";
-document.getElementById("addKursnamn").value="";
-document.getElementById("addProgression").value="";
-document.getElementById("addKursplan").value="";
+addCoursebtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    addCourse();
 });
 
 
@@ -41,7 +35,7 @@ document.getElementById("addKursplan").value="";
 // connects to the api where the courses are stored
 function getCourses() {
     coursesEl.innerHTML = "";
-// the link to the api
+    // the link to the api
     fetch('http://studenter.miun.se/~tijo1901/DT173G/moment%205.1/api.php')
         .then(response => response.json())
         .then(data => {
@@ -89,7 +83,7 @@ function addCourse() {
     let plan = addCourseplan.value;
 
     let kurs = { 'kurskod': kode, 'kursnamn': name, 'progression': progress, 'kursplan': plan }
-// another link to the api
+    // another link to the api
     fetch('http://studenter.miun.se/~tijo1901/DT173G/moment%205.1/api.php', {
         // using metod post
         method: 'POST',
@@ -104,4 +98,11 @@ function addCourse() {
         .catch(error => {
             console.log('error ', error);
         })
+
+    //after we run through all code we give back the forms fields empty values
+    // So they wont retain the previusly inputed information
+    addCoursename.value = ""
+    addProgression.value = "";
+    addCoursekode.value = "";
+    addCourseplan.value = "";
 }
