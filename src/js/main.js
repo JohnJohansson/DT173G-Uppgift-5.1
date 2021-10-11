@@ -6,7 +6,7 @@
 // print out the courses on the index screen 
 let coursesEl = document.getElementById("printCourses");
 
-// for thr add courses button
+// for the add courses button
 let addCoursebtn = document.getElementById("addCourse");
 
 // the four fields in the form so you can add more courses
@@ -21,7 +21,13 @@ let addCourseplan = document.getElementById("addKursplan");
 window.addEventListener('load', getCourses);
 
 // event listener for the add courses button
-addCoursebtn.addEventListener('click', addCourse);
+// by putting an extra function and adding prevent defult we can stop the
+// form from reloding the page, a defult form relodes the page
+// stoping all the code from having time to run making the code not work as intended.
+addCoursebtn.addEventListener('click', function(e) {
+e.preventDefault();
+addCourse();
+});
 
 
 //funktions -------
@@ -30,27 +36,31 @@ addCoursebtn.addEventListener('click', addCourse);
 function getCourses() {
     coursesEl.innerHTML = "";
 // the link to the api
-    fetch('https://studenter.miun.se/~tijo1901/writeable/w5/api.php')
+    fetch('http://studenter.miun.se/~tijo1901/writeable/w5/api.php')
         .then(response => response.json())
         .then(data => {
             data.forEach(course => {
                 // prints out our courses into a tabel
                 // target blank for the webblinks 
                 // a button to erase a course in the bottom
+                // we add an event on the onclick and connects it to the delete funktion
                 coursesEl.innerHTML +=
                     `<tr><td>${course.kursnamn}</td>
                     <td>${course.kurskod}</td>
                     <td>${course.progression}</td>
                     <td><a href="${course.kursplan}"target="_blank">Webblänk</a></td>
-                    <td><button id="${course.id}" onClick="deleteCourse(${course.id})">Radera</button></td>
+                    <td><button id="${course.id}" onClick="deleteCourse(event, ${course.id})">Radera</button></td>
                     </tr>`;
 
             })
         })
 }
 // function for deleting courses 
-function deleteCourse(id) {
-    fetch('https://studenter.miun.se/~tijo1901/writeable/w5/api.php?id=' + id, {
+// we add the event from the delete button
+function deleteCourse(event, id) {
+    // we give the event a prevent defult so delete wont relode the page.
+    event.preventDefault();
+    fetch('http://studenter.miun.se/~tijo1901/writeable/w5/api.php?id=' + id, {
         // using metod delete
         method: 'DELETE',
     })
@@ -74,7 +84,7 @@ function addCourse() {
 
     let kurs = { 'kurskod': kode, 'kursnamn': name, 'progression': progress, 'kursplan': plan }
 // another link to the api
-    fetch('https://studenter.miun.se/~tijo1901/writeable/w5/api.php', {
+    fetch('http://studenter.miun.se/~tijo1901/writeable/w5/api.php', {
         // using metod post
         method: 'POST',
         // makes sure to turn them into a json format before sending them to the api
@@ -88,4 +98,10 @@ function addCourse() {
         .catch(error => {
             console.log('error ', error);
         })
+//after we run through all code we give back the forms fields empty values
+// So they wont retain the previusly inputed information
+document.getElementById("addKurskod").value="";
+document.getElementById("addKursnamn").value="";
+document.getElementById("addProgression").value="";
+document.getElementById("addKursplan").value="";
 }
