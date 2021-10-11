@@ -27,6 +27,12 @@ window.addEventListener('load', getCourses);
 addCoursebtn.addEventListener('click', function(e) {
 e.preventDefault();
 addCourse();
+//after we run through all code we give back the forms fields empty values
+// So they wont retain the previusly inputed information
+document.getElementById("addKurskod").value="";
+document.getElementById("addKursnamn").value="";
+document.getElementById("addProgression").value="";
+document.getElementById("addKursplan").value="";
 });
 
 
@@ -36,7 +42,7 @@ addCourse();
 function getCourses() {
     coursesEl.innerHTML = "";
 // the link to the api
-    fetch('http://studenter.miun.se/~tijo1901/writeable/w5/api.php')
+    fetch('http://studenter.miun.se/~tijo1901/DT173G/moment%205.1/api.php')
         .then(response => response.json())
         .then(data => {
             data.forEach(course => {
@@ -60,7 +66,7 @@ function getCourses() {
 function deleteCourse(event, id) {
     // we give the event a prevent defult so delete wont relode the page.
     event.preventDefault();
-    fetch('http://studenter.miun.se/~tijo1901/writeable/w5/api.php?id=' + id, {
+    fetch('http://studenter.miun.se/~tijo1901/DT173G/moment%205.1/api.php?id=' + id, {
         // using metod delete
         method: 'DELETE',
     })
@@ -84,7 +90,7 @@ function addCourse() {
 
     let kurs = { 'kurskod': kode, 'kursnamn': name, 'progression': progress, 'kursplan': plan }
 // another link to the api
-    fetch('http://studenter.miun.se/~tijo1901/writeable/w5/api.php', {
+    fetch('http://studenter.miun.se/~tijo1901/DT173G/moment%205.1/api.php', {
         // using metod post
         method: 'POST',
         // makes sure to turn them into a json format before sending them to the api
@@ -98,10 +104,4 @@ function addCourse() {
         .catch(error => {
             console.log('error ', error);
         })
-//after we run through all code we give back the forms fields empty values
-// So they wont retain the previusly inputed information
-document.getElementById("addKurskod").value="";
-document.getElementById("addKursnamn").value="";
-document.getElementById("addProgression").value="";
-document.getElementById("addKursplan").value="";
 }
