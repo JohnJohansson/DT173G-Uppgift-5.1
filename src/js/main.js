@@ -38,7 +38,6 @@ addCoursebtn.addEventListener('click',()=>{
     addCourseplan.value = "";
 });
 
-
 //funktions -------
 
 // connects to the api where the courses are stored
