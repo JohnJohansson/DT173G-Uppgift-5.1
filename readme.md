@@ -6,6 +6,19 @@ An continuation of assigment 3
 
 ### Whats new
 
+**v1.1**
+Fixed the bugs thanks to exelent teacher feedback, the problem was that the submit button reloded the page 
+
+before the code had time to run through. 
+
+Fixed this by adding a event function to prevent the defult behavior 
+
+" function(event) { event.preventDefault(); }); "
+    
+Also added another event listener to the submit button wich returs the form field empty to clear them between inputs.
+
+**v1.0**
+
 This time I been learning how to make and consume an api, this is the the consuming part of it.
 
 It got full suport for CRUD wich stands for Create, Read, Update and Delete. To do this I use the metodhs
