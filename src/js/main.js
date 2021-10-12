@@ -27,16 +27,21 @@ window.addEventListener('load', getCourses);
 addCoursebtn.addEventListener('click', function(event) {
     event.preventDefault();
     addCourse();
-});
-
-//another event listener to clear the form input
-addCoursebtn.addEventListener('click',()=>{
-    // clearing the forms fields
+    // clear the form inputs
     addCoursekode.value = "";
     addCoursename.value = "";
     addProgression.value = "";
     addCourseplan.value = "";
 });
+
+// //another event listener to clear the form input
+// addCoursebtn.addEventListener('click',()=>{
+//     // clearing the forms fields
+//     addCoursekode.value = "";
+//     addCoursename.value = "";
+//     addProgression.value = "";
+//     addCourseplan.value = "";
+// });
 
 
 //funktions -------

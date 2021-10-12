@@ -16,6 +16,12 @@ Fixed this by adding a event function to prevent the defult behavior
     
 Also added another event listener to the submit button wich returs the form field empty to clear them between inputs.
 
+Link to published page: http://studenter.miun.se/~tijo1901/DT173G/moment%205.2/pub/
+
+Link to api raw data: http://studenter.miun.se/~tijo1901/DT173G/moment%205.1/api.php
+
+Link to api Install script: http://studenter.miun.se/~tijo1901/DT173G/moment%205.1/install.php (so you can erase and then replace the courses)
+
 **v1.0**
 
 This time I been learning how to make and consume an api, this is the the consuming part of it.
